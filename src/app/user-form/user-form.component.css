@@ -1,0 +1,67 @@
+
+:host {
+    display: block;
+    padding: 24px;
+    border: 2px solid #1c4980; 
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 400px;
+    max-width: 90vw;
+  }
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 0;
+    color: #383838;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  input, mat-select {
+    height: 48px;
+    font-size: 16px;
+  }
+  
+  mat-label {
+    font-size: 16px;
+    color: #383838;
+  }
+  
+  mat-error {
+    font-size: 13px;
+    color: red;
+  }
+  
+  mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  
+  button[mat-button] {
+    height: 48px;
+    min-width: 120px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+  
+  button[mat-button]:first-child {
+    background-color: #e0e0e0;
+    color: #383838;
+  }
+  
+  button[mat-button]:last-child {
+    background-color: #1c4980;
+    color: #ffffff;
+  }
+  
+  button[mat-button]:hover:last-child {
+    background-color: #163a66;
+  }
+  
