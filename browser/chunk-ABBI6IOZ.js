@@ -1,0 +1,1 @@
+import{D as i,H as p,J as a,L as f,t as e}from"./chunk-O5OVQ34H.js";import{Y as t,ga as r,jc as m}from"./chunk-EVGBOUTT.js";var d=class o{static \u0275fac=function(l){return new(l||o)};static \u0275mod=r({type:o});static \u0275inj=t({imports:[m,i,p,a,f,e]})};export{d as UserFormModule};
