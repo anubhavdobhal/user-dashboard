@@ -9,7 +9,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 // import { ChartsModule } from 'ng2-charts';
 import { MatDialogModule } from '@angular/material/dialog';
-import { UserFormComponent } from './user-form/user-form.component';
+// import { UserFormComponent } from './user-form/user-form.component';
 import { ReactiveFormsModule } from '@angular/forms'; 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -17,11 +17,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ChartComponent } from './chart/chart.component';
+import { UserFormModule } from './user-form/user-form.module';
 @NgModule({
   declarations: [
     AppComponent,
     UserDashboardComponent,
-    UserFormComponent,
+    // UserFormComponent,
     ChartComponent  
   ],
   imports: [
@@ -34,7 +35,8 @@ import { ChartComponent } from './chart/chart.component';
     MatInputModule,      
     MatSelectModule,    
     MatOptionModule,  
-    MatProgressSpinnerModule 
+    MatProgressSpinnerModule,
+    UserFormModule
   ],
   providers: [
     provideAnimationsAsync()

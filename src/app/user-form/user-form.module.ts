@@ -9,7 +9,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -18,7 +17,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSelectModule,
     MatDialogModule,
   ],
-  
+  declarations: [UserFormComponent],
+  exports: [UserFormComponent],
   
 })
 export class UserFormModule { }
