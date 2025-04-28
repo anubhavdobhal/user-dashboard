@@ -21,4 +21,5 @@ import { MatDialogModule } from '@angular/material/dialog';
   exports: [UserFormComponent],
   
 })
-export class UserFormModule { }
+export class UserFormModule {
+}

@@ -24,11 +24,6 @@ export class UserFormComponent {
   }
 
   onSubmit(): void {
-    // if (this.userForm.valid) {
-    //   this.userCreated.emit(this.userForm.value);
-    //   // You can handle the submission logic here, e.g., emit the data to the parent component or service
-    //   this.dialogRef.close(this.userForm.value);
-    // }
     if (this.userForm.valid) {
       this.userCreated.emit(this.userForm.value);
     }

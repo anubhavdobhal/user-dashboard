@@ -25,7 +25,7 @@ export class UserDashboardComponent {
   dataSource: MatTableDataSource<User>;
 
   constructor(public dialog: MatDialog,private userService: UserService) {
-    Chart.register(...registerables);
+  
     this.dataSource = new MatTableDataSource(this.users);
   }
     ngOnInit(): void {
@@ -35,6 +35,9 @@ export class UserDashboardComponent {
         setTimeout(()=>{ this.isLoading = false;},10000)
         this.updateRoleCounts();
       });
+    }
+    ngAfterViewInit(): void {
+      this.loadChartJsAndCreateChart()
     }
     openAddUserForm() { 
       const dialogRef = this.dialog.open(UserFormComponent);
@@ -46,43 +49,13 @@ export class UserDashboardComponent {
         };
         this.userService.addUser(newUser); 
         this.updateRoleCounts();
-          this.createChart();
+
+          this.loadChartJsAndCreateChart()
         dialogRef.close();
         this.isLoading = true
       });
     }
-
-    createChart() {
-      if (this.chart) {
-        this.chart.destroy(); 
-      }
     
-      this.chart = new Chart('roleChart', {
-        type: 'pie',
-        data: {
-          labels: ['Admin', 'Editor', 'Viewer'],
-          datasets: [
-            {
-              data: [
-                this.roleCounts.Admin,
-                this.roleCounts.Editor,
-                this.roleCounts.Viewer
-              ],
-              backgroundColor: ['#1c4980', '#383838', '#7cb342'],
-              hoverOffset: 4
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              position: 'bottom',
-            }
-          }
-        }
-      });
-    }
     updateRoleCounts() {
       this.roleCounts = { Admin: 0, Editor: 0, Viewer: 0 };
       this.users.forEach(user => {
@@ -91,8 +64,40 @@ export class UserDashboardComponent {
         else if (user.role === 'Viewer') this.roleCounts.Viewer++;
       });
     }
-    ngAfterViewInit(): void {
-      
-      this.createChart();
+    private async loadChartJsAndCreateChart() {
+      import('chart.js').then((ChartModule) => {
+        const { Chart, registerables } = ChartModule;
+        Chart.register(...registerables);  
+    
+        if (this.chart) {
+          this.chart.destroy(); 
+        }
+    
+        this.chart = new Chart('roleChart', {
+          type: 'pie',
+          data: {
+            labels: ['Admin', 'Editor', 'Viewer'],
+            datasets: [
+              {
+                data: [
+                  this.roleCounts.Admin,
+                  this.roleCounts.Editor,
+                  this.roleCounts.Viewer,
+                ],
+                backgroundColor: ['#1c4980', '#383838', '#7cb342'],
+                hoverOffset: 4,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: 'bottom',
+              },
+            },
+          },
+        });
+      });
     }
 }
